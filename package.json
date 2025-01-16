@@ -1,6 +1,6 @@
 {
   "name": "astro-test-wei",
-  "version": "1.0.28",
+  "version": "1.0.31",
   "description": "",
   "type": "module",
   "scripts": {
@@ -26,7 +26,8 @@
     "fs-extra": "^11.2.0",
     "send": "^0.18.0",
     "server-destroy": "^1.0.1",
-    "yaml": "^2.6.1"
+    "yaml": "^2.6.1",
+    "@astrojs/node": "^9.0.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

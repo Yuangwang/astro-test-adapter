@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import fsExtra from "fs-extra";
 import {exec } from "child_process"
+import { createRequire } from 'module';
+import path from 'path';
 // export default function createIntegration() {
 //   return {
 //     name: "wei-astro-test",
@@ -59,10 +61,13 @@ export const { move, exists, writeFile, readJson, readdir, readFileSync, existsS
 fsExtra;
 
 export function getAdapter(options: Options): AstroAdapter {
+  const require = createRequire(import.meta.url);
+  const serverEntrypoint = path.join(require.resolve('@astrojs/node'), '../server.js');
+  const previewEntrypoint = path.join(require.resolve('@astrojs/node'), '../preview.js');
 	return {
     name: "astro-test-wei",
-    serverEntrypoint: 'astro-test-wei/server.js',
-    previewEntrypoint: 'astro-test-wei/preview.js',
+    serverEntrypoint: serverEntrypoint,
+    previewEntrypoint: previewEntrypoint,
 		exports: ['handler', 'startServer', 'options'],
 		args: options,
 		adapterFeatures: {
